@@ -114,6 +114,13 @@ input[type="submit"]:hover {
 .error {
   color: #dc3545;
 }
+#Average-Rating{
+  font-size: 1.2rem;
+  background-color: blue;
+  padding: 2px;
+  display: block;
+  margin: 0 auto;
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {

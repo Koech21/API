@@ -7,9 +7,9 @@ const options = {
 	}
 };
 
- async function serachAndDisplaymovies(title){
+ async function serachAndDisplaymovies(title,type){
 try {
-	const response = await fetch(`https://imdb236.p.rapidapi.com/api/imdb/search?originalTitle=${title}&type=movie&genre=Drama&rows=25&sortOrder=ASC&sortField=id`, options);
+	const response = await fetch(`https://imdb236.p.rapidapi.com/api/imdb/search?originalTitle=${title}&$type=${type}&genre=Drama&rows=25&sortOrder=ASC&sortField=id`, options);
 	const result = await response.json();
 	console.log(result);
     const moviesList = document.getElementById("results-list")
@@ -24,6 +24,11 @@ try {
           ${
             movie.contentRating
             ? `<p> Content Rating: ${movie.contentRating}</p>`
+            : ""
+          }
+         ${
+            movie.averageRating
+            ? `<p id="Average-Rating"> Average Rating: ${movie.averageRating}</p>`
             : ""
           }
         `;
@@ -43,12 +48,14 @@ document.querySelector("form").addEventListener("submit", (event)=>{
     event.preventDefault();
 
      const searchTerm = document.querySelector("#title").value;
+     const typeitem = document.querySelector("#type").value;
   if (searchTerm.trim() === "") {
     alert("Please search for something before submiting the form.");
     return;
   }
 
-    serachAndDisplaymovies(searchTerm)
+    serachAndDisplaymovies(searchTerm,typeitem)
     document.querySelector("#title").value = "";
+    document.querySelector("#type").value = "";
 })
 //task - ammend the code to include a drop down menu for a search category
