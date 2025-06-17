@@ -1,4 +1,7 @@
 
+
+
+
 const options = {
 	method: 'GET',
 	headers: {
@@ -15,6 +18,7 @@ try {
 	const response = await fetch(url, options);
 	const result = await response.json();
 	console.log(result);
+  
     const moviesList = document.getElementById("results-list")
     moviesList.innerHTML=""
     result.results.forEach((movie)=>{
@@ -24,6 +28,8 @@ try {
           <img src="${movie.primaryImage}" alt="${movie.primaryTitle}">
           <h3><span>${movie.type}</span>${movie.primaryTitle}</h3>
           <p>${movie.description?.slice(0,200)|| "No description available" }</p>
+          <p>Release date: ${movie.releaseDate}</p>
+          <p>Runtime: ${movie.runtimeMinutes} minutes</p>
           ${
             movie.contentRating
             ? `<p> Content Rating: ${movie.contentRating}</p>`
