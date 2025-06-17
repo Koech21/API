@@ -9,7 +9,6 @@ const options = {
 
  async function serachAndDisplaymovies(title,type){
 try {
-  // const url = `https://imdb236.p.rapidapi.com/api/imdb/search?originalTitle=${title}&$type=${type}&genre=Drama&rows=25&sortOrder=ASC&sortField=id`
   const url = `https://imdb236.p.rapidapi.com/api/imdb/search?originalTitle=${title}&type=${type}&genre=Drama&rows=25&sortOrder=ASC&sortField=id`
   console.log(url);
   
