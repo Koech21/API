@@ -9,7 +9,11 @@ const options = {
 
  async function serachAndDisplaymovies(title,type){
 try {
-	const response = await fetch(`https://imdb236.p.rapidapi.com/api/imdb/search?originalTitle=${title}&$type=${type}&genre=Drama&rows=25&sortOrder=ASC&sortField=id`, options);
+  // const url = `https://imdb236.p.rapidapi.com/api/imdb/search?originalTitle=${title}&$type=${type}&genre=Drama&rows=25&sortOrder=ASC&sortField=id`
+  const url = `https://imdb236.p.rapidapi.com/api/imdb/search?originalTitle=${title}&type=${type}&genre=Drama&rows=25&sortOrder=ASC&sortField=id`
+  console.log(url);
+  
+	const response = await fetch(url, options);
 	const result = await response.json();
 	console.log(result);
     const moviesList = document.getElementById("results-list")
@@ -19,7 +23,7 @@ try {
         movieElement.className= "movie-item";
         movieElement.innerHTML=`
           <img src="${movie.primaryImage}" alt="${movie.primaryTitle}">
-          <h3><span>${movie.type}</span>${movie}</h3>
+          <h3><span>${movie.type}</span>${movie.primaryTitle}</h3>
           <p>${movie.description?.slice(0,200)|| "No description available" }</p>
           ${
             movie.contentRating
