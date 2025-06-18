@@ -82,12 +82,12 @@ function displayMovies(movies) {
       <p>${movie.description?.slice(0, 200) || "No description available"}</p>
       ${
         movie.releaseDate
-          ? `<p> Runtime: ${movie.releaseDate} minutes</p>`
+          ? `<p> Runtime: ${movie.releaseDate}</p>`
           : ""
       }
       ${
         movie.runtimeMinutes
-          ? `<p> Runtime: ${movie.runtimeMinutes}</p>`
+          ? `<p> Runtime: ${movie.runtimeMinutes} Minutes</p>`
           : ""
       }
       ${
